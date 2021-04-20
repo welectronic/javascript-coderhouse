@@ -64,7 +64,7 @@ let factura = {
     }
 };
 
-factura.cliente.nombreCliente = prompt('Escribe tu nombre');
+/* factura.cliente.nombreCliente = prompt('Escribe tu nombre');
 factura.cliente.apellidoCliente = prompt('Escribe tu apellido');
 factura.cliente.telefono = prompt('Escribe tu numero de teléfono');
 factura.cliente.email = prompt('Escribe tu email');
@@ -77,7 +77,7 @@ while (newItem != false) {
     factura.producto.push(new articulo(factura.producto.length + 1, concepto, cantidad))
     factura.producto[factura.producto.length - 1].valorUnitario();
     newItem = confirm('Deseas agregar un nuevo producto?');
-}
+} 
 
 factura.numeroFactura = '001'; // dependerá de un ente externo
 const tiempoTranscurrido = Date.now();
@@ -86,7 +86,7 @@ factura.fecha = hoy.toLocaleDateString();
 
 factura.calculoFactura();
 console.table(factura.producto)
-console.table(factura.total)
+console.table(factura.total)*/
 
 function showProductTable(tabla) {
     var table = document.getElementById("productTable");
@@ -124,17 +124,21 @@ function desactivaBoton() {
 window.onload = function () {
 
     let nav = Array.from(document.getElementsByClassName('nav-link'));
-
     nav.map(button => button.onclick = () => {
-
         ocultaph();
         desactivaBoton();
         document.getElementById(button.dataset["phtarget"]).className = "ph";
         button.className= 'nav-link text-white active';
-
     });
 
 }
+
+$(document).ready(function(){
+	// Activate tooltip
+	$('[data-toggle="tooltip"]').tooltip();
+});
+
+
 
 
 

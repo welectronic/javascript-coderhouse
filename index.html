@@ -59,7 +59,7 @@
   </div>
 
   <div class="d-flex flex-column align-items-stretch bg-white" style="width: 80%;">
-    <div id="phInicio" class="ph" >
+    <div id="phInicio" class="ph">
       <div href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
         <i class="bi me-2 bi-house-door"></i>
         <span class="fs-5 fw-semibold" id="tituloContenedor">Inicio</span>
@@ -100,16 +100,149 @@
         <i class="bi me-2 bi-person-circle"></i>
         <span class="fs-5 fw-semibold" id="tituloContenedor">Clientes</span>
       </div>
+
+      <div class="table-responsive">
+        <div class="p-2 ">
+          <div class="d-grid gap-2 d-md-flex justify-content-end">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addClientModal">
+              <i class="bi bi-person-plus"></i>
+              <span>Agregar cliente</span>
+            </button>
+          </div>
+          <table class="table table-striped table-hover mt-4">
+            <thead>
+              <tr>
+              
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>teléfono</th>
+                <th>e-mail</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="pt-3">William</td>
+                <td class="pt-3">Rojas </td>
+                <td class="pt-3">1234567890</td>
+                <td class="pt-3">test@test.com</td>
+                <td>
+                  <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#editClientModal" title="Editar">
+                    <i class="bi bi-pen" ></i>
+                  </button>
+                  <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delClientModal" title="Borrar">
+                    <i class="bi bi-eraser"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- add Modal HTML -->
+      <div class="modal fade" id="addClientModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Agregar Cliente</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Nombre</label>
+                  <input type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Apellido</label>
+                  <input type="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Teléfono</label>
+                  <textarea class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label>e-mail</label>
+                  <input type="text" class="form-control" required>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Edit Modal HTML -->
+      <div id="editClientModal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <h4 class="modal-title">Edit Employee</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Email</label>
+                  <input type="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Address</label>
+                  <textarea class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Phone</label>
+                  <input type="text" class="form-control" required>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Delete Modal HTML -->
+      <div id="delClientModal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <form>
+              <div class="modal-header">
+                <h4 class="modal-title">Borrar cliente</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to delete these Records?</p>
+                <p class="text-warning"><small>This action cannot be undone.</small></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-danger">Borrar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
-    integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
-    crossorigin="anonymous"></script>
+    integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous">
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
-    integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
-    crossorigin="anonymous"></script>
+    integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous">
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="js/app.js"></script>
 
 </body>
