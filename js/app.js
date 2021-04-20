@@ -1,10 +1,10 @@
 
 // se define la lista de productos disponibles para comprar con su respectivo precio
 const productos = [
-    { nombre: 'router', precio: 150000 },
-    { nombre: 'antena', precio: 230000 },
-    { nombre: 'internet', precio: 80000 },
-    { nombre: 'amplificador', precio: 200000 }
+    { nombre: 'router', descripcion: 'Router inalámbrico marca Dlink', precio: 150000 },
+    { nombre: 'antena', descripcion: 'LiteBeam 5Ghz', precio: 230000 },
+    { nombre: 'internet', descripcion: 'Dedicado 1:1', precio: 80000 },
+    { nombre: 'amplificador', descripcion: 'Amplicifador de rango 5Ghz', precio: 200000 }
 ];
 
 console.log('listado de productos');
@@ -26,25 +26,25 @@ class articulo {
 class clientes {
     constructor(nombreCliente, apellidoCliente, telefono, email) {
         this.nombreCliente = nombreCliente,
-        this.apellidoCliente = apellidoCliente,
-        this.telefono = telefono,
-        this.email = email
+            this.apellidoCliente = apellidoCliente,
+            this.telefono = telefono,
+            this.email = email
     }
 }
 
 class totales {
     constructor(subtotal, iva, total) {
         this.subtotal = subtotal,
-        this.iva = iva,
-        this.total = total
+            this.iva = iva,
+            this.total = total
     }
 
     Iva() {
-        this.total.iva = this.total.subtotal * 0.19;
+        this.iva = this.subtotal * 0.19;
     }
 
     Total() {
-        this.total.total = this.total.subtotal + this.total.iva;
+        this.total = this.subtotal + this.iva;
     }
 }
 
@@ -53,7 +53,7 @@ let factura = {
     fecha: String,
     cliente: clientes,
     producto: [],
-    total: totales,
+    total: new totales(),
     SubTotal: function () {
         this.total.subtotal = factura.producto.map(x => x.valor).reduce((a, b) => a + b)
     },
@@ -87,6 +87,26 @@ factura.fecha = hoy.toLocaleDateString();
 factura.calculoFactura();
 console.table(factura.producto)
 console.table(factura.total)
+
+function showProductTable(tabla) {
+    var table = document.getElementById("productTable");
+    for (let i = 0; i < tabla.length; i++) {
+
+        let row = table.tBodies[0].insertRow(i);
+        let j = 0;
+        let cell1 = row.insertCell(j);
+        cell1.innerHTML = i + 1;
+        j++;
+        for (const property in tabla[i]) {
+            let cell1 = row.insertCell(j);
+            cell1.innerHTML = tabla[i][property];
+            j++;
+        }
+    }
+
+}
+
+showProductTable(productos);
 
 function ordenarproductos() {
     productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
