@@ -113,5 +113,28 @@ function ordenarproductos() {
     console.table(productos);
 }
 
+function ocultaph() {
+    Array.from(document.getElementsByClassName('ph')).map(container => container.className='ph inactivo');
+}
+
+function desactivaBoton() {
+    Array.from(document.getElementsByClassName('nav-link')).map(navButton => navButton.className='nav-link text-white');
+}
+
+window.onload = function () {
+
+    let nav = Array.from(document.getElementsByClassName('nav-link'));
+
+    nav.map(button => button.onclick = () => {
+
+        ocultaph();
+        desactivaBoton();
+        document.getElementById(button.dataset["phtarget"]).className = "ph";
+        button.className= 'nav-link text-white active';
+
+    });
+
+}
+
 
 
