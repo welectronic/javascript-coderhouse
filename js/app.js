@@ -1,57 +1,10 @@
-
-// se define la lista de productos disponibles para comprar con su respectivo precio
-var productos = [
-    { id: 1, nombre: 'router', descripcion: 'Router inalámbrico marca Dlink', precio: 150000 },
-    { id: 2, nombre: 'antena', descripcion: 'LiteBeam 5Ghz', precio: 230000 },
-    { id: 3, nombre: 'internet', descripcion: 'Dedicado 1:1', precio: 80000 },
-    { id: 4, nombre: 'amplificador', descripcion: 'Amplicifador de rango 5Ghz', precio: 200000 }
-];
-
+import articulo from './modelo/articulo.js'
+import clientes from './modelo/clientes.js'
+import totales from './modelo/totales.js'
+import {} from './eventos/eventos.js'
+import {productos} from './data/productos.js'
 
 var bdClientes = [];
-
-console.log('listado de productos');
-console.table(productos);
-
-//Se define el objeto que almacena y maneja el valor unitario de cada item comprado
-class articulo {
-    constructor(item, concepto, cantidad) {
-        this.item = item;
-        this.concepto = concepto;
-        this.cantidad = cantidad;
-        this.valor = 0;
-    }
-    valorUnitario() {
-        this.valor = this.cantidad * productos.filter(x => x.nombre == this.concepto)[0].precio
-    }
-}
-
-
-class clientes {
-    constructor(id, nombreCliente, apellidoCliente, telefono, email) {
-        this.id = id,
-            this.nombreCliente = nombreCliente,
-            this.apellidoCliente = apellidoCliente,
-            this.telefono = telefono,
-            this.email = email
-    }
-}
-
-class totales {
-    constructor(subtotal, iva, total) {
-        this.subtotal = subtotal,
-            this.iva = iva,
-            this.total = total
-    }
-
-    Iva() {
-        this.iva = this.subtotal * 0.19;
-    }
-
-    Total() {
-        this.total = this.subtotal + this.iva;
-    }
-}
 
 let factura = {
     numeroFactura: String,
@@ -90,8 +43,7 @@ const hoy = new Date(tiempoTranscurrido);
 factura.fecha = hoy.toLocaleDateString();
 
 //factura.calculoFactura();
-console.table(factura.producto)
-console.table(factura.total)
+
 
 function showProductTable(tabla, targetId, modalGroup) {
     var table = document.getElementById(targetId);
@@ -146,16 +98,8 @@ showProductTable(productos, "productTable", "Product");
 
 function ordenarproductos() {
     productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
-    console.table(productos);
 }
 
-function ocultaph() {
-    Array.from(document.getElementsByClassName('ph')).map(container => container.className = 'ph inactivo');
-}
-
-function desactivaBoton() {
-    Array.from(document.getElementsByClassName('nav-link')).map(navButton => navButton.className = 'nav-link text-white');
-}
 
 function guardaProducto(e) {
     let nombre = document.getElementById('ctrlAddNombreProd');
@@ -179,25 +123,4 @@ function guardaProducto(e) {
     precio.value = "";
     showProductTable(productos, "productTable", "Product");
 }
-
-window.onload = function () {
-
-    let nav = Array.from(document.getElementsByClassName('nav-link'));
-    nav.map(button => button.onclick = () => {
-        ocultaph();
-        desactivaBoton();
-        document.getElementById(button.dataset["phtarget"]).className = "ph";
-        button.className = 'nav-link text-white active';
-    });
-
-}
-
-$(document).ready(function () {
-    // Activate tooltip
-    $('[data-toggle="tooltip"]').tooltip();
-});
-
-
-
-
 
