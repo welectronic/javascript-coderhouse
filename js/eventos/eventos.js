@@ -1,3 +1,6 @@
+import {guardaProducto} from '../lib/lib.js'
+
+
 function ocultaph() {
     Array.from(document.getElementsByClassName('ph')).map(container => container.className = 'ph inactivo');
 }
@@ -15,5 +18,11 @@ window.onload = function () {
         document.getElementById(button.dataset["phtarget"]).className = "ph";
         button.classList.add('active');
     });
+
+    let boton = document.getElementById('btnGuardaProducto');
+
+    boton.onclick = () =>{
+        guardaProducto();
+    }
 
 }
