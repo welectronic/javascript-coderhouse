@@ -40,9 +40,9 @@ let newItem = true;
 }  */
 
 factura.numeroFactura = '001'; // dependerá de un ente externo
-const tiempoTranscurrido = Date.now();
-const hoy = new Date(tiempoTranscurrido);
-factura.fecha = hoy.toLocaleDateString();
+
+factura.fecha = new Date(Date.now()).toLocaleDateString();
+
 
 //factura.calculoFactura();
 
