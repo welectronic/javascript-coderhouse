@@ -1,14 +1,14 @@
 import {productos} from '../data/productos.js'
 
-export function showProductTable(tabla, targetId, modalGroup) {
+export function showProductTable(arreglo, targetId, modalGroup) {
     var table = document.getElementById(targetId);
     table.tBodies[0].innerHTML = '';
-    for (let i = 0; i < tabla.length; i++) {
+    for (let i = 0; i < arreglo.length; i++) {
         let row = table.tBodies[0].insertRow(i);
         let j = 0;
-        for (const property in tabla[i]) {
+        for (const property in arreglo[i]) {
             let cell1 = row.insertCell(j);
-            cell1.innerHTML = tabla[i][property];
+            cell1.innerHTML = arreglo[i][property];
             j++;
         }
         let cell1 = row.insertCell(j);
@@ -18,9 +18,9 @@ export function showProductTable(tabla, targetId, modalGroup) {
         miBoton.classList.add("btn-outline-success");
         miBoton.classList.add("me-1");
         miBoton.setAttribute('data-bs-toggle', 'modal');
-        miBoton.setAttribute('data-itemId', tabla[i].id);
+        miBoton.setAttribute('data-itemId', arreglo[i].id);
         miBoton.setAttribute('data-bs-target', `#edit${modalGroup}Modal`);
-        miBoton.id = 'btnEditar' + tabla[i].id;
+        miBoton.id = 'btnEditar' + arreglo[i].id;
         miBoton.title = 'Editar';
         let miSpan = document.createElement("span");
         miSpan.classList.add("bi");
@@ -32,9 +32,9 @@ export function showProductTable(tabla, targetId, modalGroup) {
         miBoton2.classList.add("btn-outline-danger");
         miBoton2.classList.add("me-1");
         miBoton2.setAttribute('data-bs-toggle', 'modal');
-        miBoton.setAttribute('data-itemId', tabla[i].id);
+        miBoton.setAttribute('data-itemId', arreglo[i].id);
         miBoton2.setAttribute('data-bs-target', `#del${modalGroup}Modal`);
-        miBoton2.id = 'btnBorrar' + tabla[i].id;
+        miBoton2.id = 'btnBorrar' + arreglo[i].id;
         miBoton2.title = 'Borrar';
         let miSpan2 = document.createElement("span");
         miSpan2.classList.add("bi");

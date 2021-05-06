@@ -2,7 +2,7 @@ import { guardaProducto } from '../lib/lib.js'
 
 
 function ocultaph() {
-    Array.from($('.ph')).map(container => container.className = 'ph inactivo');
+    Array.from($('.ph')).map(container => $(container).hide(300));
 }
 
 function desactivaBoton() {
@@ -15,8 +15,8 @@ window.onload = function () {
     nav.map(button => button.onclick = () => {
         ocultaph();
         desactivaBoton();
-        $('#' + button.dataset["phtarget"])[0].className = "ph";
-        button.classList.add('active');
+        $($('#' + button.dataset["phtarget"])[0]).show(500);
+        $(button).classList.add('active');
     });
 
     $('#btnGuardaProducto').click(() => { guardaProducto(); });
