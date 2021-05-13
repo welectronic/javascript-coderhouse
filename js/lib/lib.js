@@ -1,4 +1,4 @@
-import {productos} from '../data/productos.js'
+import {productos} from '../data/productos.js' //pendiente convertirlo a json
 
 export function showProductTable(arreglo, targetId, modalGroup) {
     var table = document.getElementById(targetId);
