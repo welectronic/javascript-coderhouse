@@ -1,4 +1,4 @@
-export const productos = [
+export let productos = [
     {
         "id": 1,
         "nombre": "router",

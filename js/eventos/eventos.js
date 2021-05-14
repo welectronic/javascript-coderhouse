@@ -34,6 +34,6 @@ window.onload = function () {
         $(button).addClass('active');
     });
 
-    $('#btnGuardaProducto').click(() => { guardaProducto(); });
+    $('#addProductModal').on('submit',guardaProducto);
 
 }
