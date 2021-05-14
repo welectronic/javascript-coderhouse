@@ -4,7 +4,7 @@ export default class articulo {
         this.item = item;
         this.concepto = concepto;
         this.cantidad = cantidad;
-        this.valor = 0;
+        this.valorUnitario()
     }
     valorUnitario() {
         this.valor = this.cantidad * productos.filter(x => x.nombre == this.concepto)[0].precio

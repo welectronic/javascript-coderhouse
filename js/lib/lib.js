@@ -1,4 +1,5 @@
 import {productos} from '../data/productos.js' //pendiente convertirlo a json
+import botonaccion from '../controles/botonaccion.js'
 
 export function showProductTable(arreglo, targetId, modalGroup) {
     var table = document.getElementById(targetId);
@@ -13,36 +14,11 @@ export function showProductTable(arreglo, targetId, modalGroup) {
         }
         let cell1 = row.insertCell(j);
 
-        let miBoton = document.createElement("button");
-        miBoton.classList.add("btn");
-        miBoton.classList.add("btn-outline-success");
-        miBoton.classList.add("me-1");
-        miBoton.setAttribute('data-bs-toggle', 'modal');
-        miBoton.setAttribute('data-itemId', arreglo[i].id);
-        miBoton.setAttribute('data-bs-target', `#edit${modalGroup}Modal`);
-        miBoton.id = 'btnEditar' + arreglo[i].id;
-        miBoton.title = 'Editar';
-        let miSpan = document.createElement("span");
-        miSpan.classList.add("bi");
-        miSpan.classList.add("bi-pen");
-        miBoton.appendChild(miSpan);
+        let miBoton = new botonaccion("btn-outline-success",`edit${modalGroup}Modal`,"Editar","bi-pen")
+        let miBoton2 = new botonaccion("btn-outline-danger",`del${modalGroup}Modal`,"Borrar","bi-eraser")
 
-        let miBoton2 = document.createElement("button");
-        miBoton2.classList.add("btn");
-        miBoton2.classList.add("btn-outline-danger");
-        miBoton2.classList.add("me-1");
-        miBoton2.setAttribute('data-bs-toggle', 'modal');
-        miBoton.setAttribute('data-itemId', arreglo[i].id);
-        miBoton2.setAttribute('data-bs-target', `#del${modalGroup}Modal`);
-        miBoton2.id = 'btnBorrar' + arreglo[i].id;
-        miBoton2.title = 'Borrar';
-        let miSpan2 = document.createElement("span");
-        miSpan2.classList.add("bi");
-        miSpan2.classList.add("bi-eraser");
-        miBoton2.appendChild(miSpan2);
-
-        cell1.appendChild(miBoton);
-        cell1.appendChild(miBoton2);
+        cell1.appendChild(miBoton.Html);
+        cell1.appendChild(miBoton2.Html);
 
     }
 
@@ -51,6 +27,7 @@ export function showProductTable(arreglo, targetId, modalGroup) {
 export function ordenarproductos() {
     productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
 }
+
 
 
 export function guardaProducto(e) {
