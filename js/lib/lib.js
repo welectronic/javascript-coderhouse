@@ -2,7 +2,7 @@ import { productos } from '../data/productos.js' //pendiente convertirlo a json
 import botonaccion from '../controles/botonaccion.js'
 import producto from '../modelo/producto.js'
 /**
- * 
+ * función que muestra los datos de un arreglo en una tabla
  * @param {*} arreglo Arreglo que contiene los datos a mostrar en la tabla
  * @param {*} targetId Id de la tabla creada para almacenar los datos
  * @param {*} modalGroup nombre del grupo de modales destinados a hacer el CRUD
@@ -26,16 +26,35 @@ export function showProductTable(arreglo, targetId, modalGroup) {
     }
 }
 
+/**
+ * Función para ordenar un arreglo
+ */
 export function ordenarproductos() {
     productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
 }
 
+/**
+ * función invocada al guardar el formulario de guardar productos
+ * @param {*} e formulario que desencadena el evento
+ */
 export function guardaProducto(e) {
     e.preventDefault();
-    let formData = $('#' + e.target.id + ' input');
-    let agregado = new producto(productos.length + 1, formData)
-    productos.push(agregado);
-    formData[0].reset();
-    $('#addProductModal').modal('hide');
-    showProductTable(productos, "productTable", "Product");
+    guardaArreglo(e.target.id, "addProductModal", "productTable", "Product", productos)
+}
+
+/**
+ * función que guarda la información de un form en un arreglo y muestra los datos en una tabla
+ * @param {*} idForm identificador del formulario que se va a guardar
+ * @param {*} idModal  identificador del modal que contiene al formulario
+ * @param {*} targetId Id de la tabla creada para almacenar los datos
+ * @param {*} modalGroup nombre del grupo de modales destinados a hacer el CRUD
+ * @param {*} arreglo Arreglo que Almacenará los datos
+ */
+function guardaArreglo(idForm, idModal, targetId, modalGroup, arreglo) {
+    let formData = $('#' + idForm + ' input');
+    let agregado = new producto(arreglo.length + 1, formData)
+    arreglo.push(agregado);
+    $('#' + idForm)[0].reset();
+    $('#' + idModal).modal('hide');
+    showProductTable(arreglo, targetId, modalGroup);
 }

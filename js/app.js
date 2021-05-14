@@ -1,4 +1,3 @@
-import articulo from './modelo/articulo.js'
 import clientes from './modelo/clientes.js'
 import totales from './modelo/totales.js'
 import {} from './eventos/eventos.js'
