@@ -1,5 +1,6 @@
-import {productos} from '../data/productos.js' //pendiente convertirlo a json
+import { productos } from '../data/productos.js' //pendiente convertirlo a json
 import botonaccion from '../controles/botonaccion.js'
+import producto from '../modelo/producto.js'
 /**
  * 
  * @param {*} arreglo Arreglo que contiene los datos a mostrar en la tabla
@@ -18,39 +19,23 @@ export function showProductTable(arreglo, targetId, modalGroup) {
             j++;
         }
         let cell1 = row.insertCell(j);
-        let miBoton = new botonaccion("btn-outline-success",`edit${modalGroup}Modal`,"Editar","bi-pen")
-        let miBoton2 = new botonaccion("btn-outline-danger",`del${modalGroup}Modal`,"Borrar","bi-eraser")
+        let miBoton = new botonaccion("btn-outline-success", `edit${modalGroup}Modal`, "Editar", "bi-pen")
+        let miBoton2 = new botonaccion("btn-outline-danger", `del${modalGroup}Modal`, "Borrar", "bi-eraser")
         cell1.appendChild(miBoton.Html);
         cell1.appendChild(miBoton2.Html);
     }
-
 }
 
 export function ordenarproductos() {
     productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
 }
 
-
-
 export function guardaProducto(e) {
-    let nombre = document.getElementById('ctrlAddNombreProd');
-    let desc = document.getElementById('ctrlAddDescProd');
-    let precio = document.getElementById('ctrlAddPrecioProd');
-
-    if(nombre.value == '' || desc.value == '' || precio.value == ''){
-        $('#addProductModal').modal('hide');
-        return;
-    }
-
-    productos.push({
-        id: productos.length + 1,
-        nombre: nombre.value.toLowerCase(),
-        descripcion: desc.value,
-        precio: precio.value
-    });
+    e.preventDefault();
+    let formData = $('#' + e.target.id + ' input');
+    let agregado = new producto(productos.length + 1, formData)
+    productos.push(agregado);
+    formData[0].reset();
     $('#addProductModal').modal('hide');
-    nombre.value = "";
-    desc.value = "";
-    precio.value = "";
     showProductTable(productos, "productTable", "Product");
 }
