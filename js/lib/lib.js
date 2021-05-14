@@ -1,6 +1,11 @@
 import {productos} from '../data/productos.js' //pendiente convertirlo a json
 import botonaccion from '../controles/botonaccion.js'
-
+/**
+ * 
+ * @param {*} arreglo Arreglo que contiene los datos a mostrar en la tabla
+ * @param {*} targetId Id de la tabla creada para almacenar los datos
+ * @param {*} modalGroup nombre del grupo de modales destinados a hacer el CRUD
+ */
 export function showProductTable(arreglo, targetId, modalGroup) {
     var table = document.getElementById(targetId);
     table.tBodies[0].innerHTML = '';
@@ -13,13 +18,10 @@ export function showProductTable(arreglo, targetId, modalGroup) {
             j++;
         }
         let cell1 = row.insertCell(j);
-
         let miBoton = new botonaccion("btn-outline-success",`edit${modalGroup}Modal`,"Editar","bi-pen")
         let miBoton2 = new botonaccion("btn-outline-danger",`del${modalGroup}Modal`,"Borrar","bi-eraser")
-
         cell1.appendChild(miBoton.Html);
         cell1.appendChild(miBoton2.Html);
-
     }
 
 }
