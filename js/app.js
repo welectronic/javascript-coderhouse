@@ -1,11 +1,13 @@
 import clientes from './modelo/clientes.js'
 import totales from './modelo/totales.js'
 import {} from './eventos/eventos.js'
-import {productos} from './data/productos.js' //pendiente convertirlo a json
+
 import {showProductTable} from './lib/lib.js'
 
 
 var bdClientes = [];
+
+let productos = JSON.parse($.getJSON({'url': "../js/data/productos.json", 'async': false}).responseText);
 
 let factura = {
     numeroFactura: String,

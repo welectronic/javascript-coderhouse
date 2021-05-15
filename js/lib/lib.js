@@ -1,6 +1,7 @@
-import { productos } from '../data/productos.js' //pendiente convertirlo a json
 import botonaccion from '../controles/botonaccion.js'
 import producto from '../modelo/producto.js'
+
+let productos = JSON.parse($.getJSON({'url': "../js/data/productos.json", 'async': false}).responseText);
 /**
  * función que muestra los datos de un arreglo en una tabla
  * @param {*} arreglo Arreglo que contiene los datos a mostrar en la tabla
@@ -39,7 +40,7 @@ export function ordenarproductos() {
  */
 export function guardaProducto(e) {
     e.preventDefault();
-    guardaArreglo(e.target.id, "addProductModal", "productTable", "Product", productos)
+    guardaArreglo(e.target.id, "addProductModal", "productTable", "Product", productos, new producto())
 }
 
 /**
@@ -49,10 +50,16 @@ export function guardaProducto(e) {
  * @param {*} targetId Id de la tabla creada para almacenar los datos
  * @param {*} modalGroup nombre del grupo de modales destinados a hacer el CRUD
  * @param {*} arreglo Arreglo que Almacenará los datos
+ * @param {*} clase la estructura del tipo de dato almacenado en arreglo
  */
-function guardaArreglo(idForm, idModal, targetId, modalGroup, arreglo) {
+function guardaArreglo(idForm, idModal, targetId, modalGroup, arreglo, clase) {
     let formData = $('#' + idForm + ' input');
-    let agregado = new producto(arreglo.length + 1, formData)
+    let agregado={}
+    switch(typeof(clase)){
+        case 'producto':
+         agregado = new producto(arreglo.length + 1, formData)
+         break;
+    }
     arreglo.push(agregado);
     $('#' + idForm)[0].reset();
     $('#' + idModal).modal('hide');

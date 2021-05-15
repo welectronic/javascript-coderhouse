@@ -11,5 +11,4 @@ export default class producto {
         this.descripción = arg[0][1].value;
         this.precio=arg[0][2].value;
     }
-
 }
