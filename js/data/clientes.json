@@ -1,0 +1,30 @@
+[
+    {
+       "id":1,
+       "nombreCliente":"William",
+       "apellidoCliente":"Rojas",
+       "telefono": "1234567890",
+       "email":"test@test.com"
+    },
+    {
+      "id":2,
+      "nombreCliente":"Homero",
+      "apellidoCliente":"Simpson",
+      "telefono": "9876543210",
+      "email":"Hometo@test.com"
+    },
+    {
+      "id":3,
+      "nombreCliente":"Bart",
+      "apellidoCliente":"Simpson",
+      "telefono": "4564564561",
+      "email":"bart@test.com"
+    },
+    {
+      "id":4,
+      "nombreCliente":"Lisa",
+      "apellidoCliente":"Simpson",
+      "telefono": "3111111111",
+      "email":"lisa@test.com"
+    }
+ ]

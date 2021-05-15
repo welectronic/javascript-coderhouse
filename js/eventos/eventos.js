@@ -1,4 +1,4 @@
-import { guardaProducto } from '../lib/lib.js'
+import { guardaCliente, guardaProducto } from '../lib/lib.js'
 
 let hideTime = 300;
 let showTime = 500;
@@ -35,5 +35,6 @@ window.onload = function () {
     });
 
     $('#addProductModal').on('submit',guardaProducto);
+    $('#addClientModal').on('submit',guardaCliente);
 
 }
