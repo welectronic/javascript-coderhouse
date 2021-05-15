@@ -2,8 +2,9 @@ import botonaccion from '../controles/botonaccion.js'
 import producto from '../modelo/producto.js'
 import cliente from '../modelo/cliente.js'
 
-let productos = JSON.parse($.getJSON({'url': "../js/data/productos.json", 'async': false}).responseText);
-let clientes = JSON.parse($.getJSON({'url': "../js/data/clientes.json", 'async': false}).responseText);
+
+let productos = JSON.parse($.getJSON({ 'url': "../js/data/productos.json", 'async': false }).responseText);
+let clientes = JSON.parse($.getJSON({ 'url': "../js/data/clientes.json", 'async': false }).responseText);
 /**
  * función que muestra los datos de un arreglo en una tabla
  * @param {*} arreglo Arreglo que contiene los datos a mostrar en la tabla
@@ -42,16 +43,16 @@ export function ordenarproductos() {
  */
 export function guardaProducto(e) {
     e.preventDefault();
-    guardaArreglo(e.target.id, "addProductModal", "productTable", "Product", productos, new producto())
+    guardaArreglo(e.target.id, "addProductModal", "productTable", "Product", productos,  producto)
 }
 
 /**
  * función invocada al guardar el formulario de guardar productos
  * @param {*} e formulario que desencadena el evento
  */
- export function guardaCliente(e) {
+export function guardaCliente(e) {
     e.preventDefault();
-    guardaArreglo(e.target.id, "addClientModal", "clientTable", "Client", clientes, new cliente())
+    guardaArreglo(e.target.id, "addClientModal", "clientTable", "Client", clientes, cliente)
 }
 
 /**
@@ -65,15 +66,7 @@ export function guardaProducto(e) {
  */
 function guardaArreglo(idForm, idModal, targetId, modalGroup, arreglo, clase) {
     let formData = $('#' + idForm + ' input');
-    let agregado={}
-    switch(typeof(clase)){
-        case 'producto':
-         agregado = new producto(arreglo.length + 1, formData)
-         break;
-         case 'cliente':
-            agregado = new cliente(arreglo.length + 1, formData)
-            break;
-    }
+    let agregado = new clase(arreglo.length + 1, formData);
     arreglo.push(agregado);
     $('#' + idForm)[0].reset();
     $('#' + idModal).modal('hide');
