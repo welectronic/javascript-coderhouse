@@ -23,7 +23,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li>
-        <div id="BtnInicio" class="nav-link text-white active" data-phtarget="phInicio">
+        <div id="BtnInicio" class="nav-link text-white " data-phtarget="phInicio">
           <i class="bi me-2 bi-house-door"></i>
           Inicio
         </div>
@@ -49,7 +49,7 @@
               </div>
             </li>
             <li>
-              <div id="BtnFacturas" class="nav-link text-white sub-nav" data-phtarget="phNuevaFactura">
+              <div id="BtnFacturas" class="nav-link text-white sub-nav active" data-phtarget="phNuevaFactura">
                 <i class="bi me-2 bi-file-earmark-spreadsheet"></i>
                 Nueva Factura
               </div>
@@ -73,11 +73,27 @@
     <hr>
   </div>
   <div class="d-flex flex-column align-items-stretch bg-white" style="width: 80%;">
-    <div id="phInicio" class="ph">
+    <div id="phInicio" class="ph inactivo">
       <div href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
         <i class="bi me-2 bi-house-door"></i>
         <span class="fs-5 fw-semibold" id="tituloContenedor">Inicio</span>
       </div>
+      <section id="hero" class="hero">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="text col-lg-6 col-md-12">
+              <h3 class="h4 text-uppercase text-shadow text-thin">simulador básico</h3>
+              <h1 class="text-shadow">Sistema de Facturación</h1>
+              <h2 class="text-shadow">Presentado por William Rojas </h2>
+              <p>Curso JavaScript Camada 10225</p>
+              <p>Profesor Alejandro Medici</p>
+              <p>Tutor Cristian Manini</p>
+              
+            </div>
+            <div class="mockup col-lg-6 d-none d-lg-block"><img src="https://www.4webs.es/tienda/901-product_big/facturas-rectificativas-abonos-parciales.jpg" alt="Mockup" class="img-fluid"></div>
+          </div>
+        </div>
+      </section>
     </div>
     <div id="phDashboard" class="ph inactivo">
       <div href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
@@ -347,7 +363,7 @@
         </div>
       </div>
     </div>
-    <div id="phNuevaFactura" class="ph inactivo">
+    <div id="phNuevaFactura" class="ph">
       <div href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
         <i class="bi me-2 bi-plus-square"></i>
         <span class="fs-5 fw-semibold" id="tituloContenedor">Nueva factura</span>

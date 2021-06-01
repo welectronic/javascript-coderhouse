@@ -80,3 +80,71 @@ body {
   overflow: scroll;
   height: 95vh;
 }
+
+section.hero {
+  min-height: 100vh;
+  position: relative;
+  background-image: linear-gradient(155deg, #fdfdfd 0%, #1f60a148 100%)
+}
+
+section.hero::before {
+  content: 'INVOICE';
+  display: inline-block;
+  color: #000;
+  opacity: 0.04;
+  font-weight: 800;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 16vw
+}
+
+section.hero .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%)
+}
+
+:is(section.hero h1,section.hero h2,section.hero h3,section.hero p) {
+  color: rgb(56, 56, 56)
+}
+
+section.hero .text-shadow {
+  text-shadow: 2px 2px 5px #5f5f5f
+}
+
+section.hero .text-thin {
+  font-weight: 400;
+  letter-spacing: 0.08rem
+}
+
+section.hero p {
+  font-size: 1.6rem;
+  font-weight: 300
+}
+
+section.hero a.get-started {
+  margin-top: 20px
+}
+
+@media (max-width: 991.98px) {
+  section.hero {
+      font-size:12px;
+      height: auto
+  }
+}
+
+@media (max-width: 767.98px) {
+  section.hero {
+      font-size:11px;
+      height: auto
+  }
+
+  section.hero .container {
+      width: 80%
+  }
+}
