@@ -30,7 +30,7 @@ window.onload = function () {
     nav.map(button => button.onclick = () => {
         ocultaph('ph');
         desactivaBoton('nav-link','active' );
-        $('#' + button.dataset["phtarget"]).show(showTime,dashRender());
+        $('#' + button.dataset["phtarget"]).show(showTime,callBackFn[button.dataset['callback']]);
         $(button).addClass('active');
     });
 
@@ -39,9 +39,17 @@ window.onload = function () {
 
 }
 
-function dashRender () {
-    myDoughnut.render();
-    myLine.render();
-    myBar.render();
-    myPie.render();
+/**
+ * Se define un objeto de funciones para hacer la llamada a determinada función callBack, dependiendo de lo que se indique en el contenedor
+ */
+let callBackFn={
+
+    dashRender: function () {
+        myDoughnut.render();
+        myLine.render();
+        myBar.render();
+        myPie.render();
+    }
 }
+
+
