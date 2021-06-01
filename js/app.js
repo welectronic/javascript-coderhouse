@@ -3,8 +3,8 @@ import {} from './eventos/eventos.js'
 import {showProductTable} from './lib/lib.js'
 
 
-let productos = JSON.parse($.getJSON({'url': "../js/data/productos.json", 'async': false}).responseText);
-let cliente = JSON.parse($.getJSON({'url': "../js/data/clientes.json", 'async': false}).responseText);
+export var productos = JSON.parse($.getJSON({'url': "../js/data/productos.json", 'async': false}).responseText);
+export var cliente = JSON.parse($.getJSON({'url': "../js/data/clientes.json", 'async': false}).responseText);
 
 // let factura = {
 //     numeroFactura: String,
