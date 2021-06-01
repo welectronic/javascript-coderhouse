@@ -75,3 +75,8 @@ body {
 .inactivo {
   display: none;
 }
+
+.dash-cont{
+  overflow: scroll;
+  height: 95vh;
+}

@@ -28,3 +28,5 @@ showProductTable(productos, "productTable", "Product");
 showProductTable(cliente, "clientTable", "Client");
 
 
+
+

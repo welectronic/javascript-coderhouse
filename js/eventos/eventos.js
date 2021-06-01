@@ -30,11 +30,18 @@ window.onload = function () {
     nav.map(button => button.onclick = () => {
         ocultaph('ph');
         desactivaBoton('nav-link','active' );
-        $('#' + button.dataset["phtarget"]).show(showTime);
+        $('#' + button.dataset["phtarget"]).show(showTime,dashRender());
         $(button).addClass('active');
     });
 
     $('#addProductModal').on('submit',guardaProducto);
     $('#addClientModal').on('submit',guardaCliente);
 
+}
+
+function dashRender () {
+    myDoughnut.render();
+    myLine.render();
+    myBar.render();
+    myPie.render();
 }
