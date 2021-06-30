@@ -59,7 +59,6 @@ let callBackFn = {
      * Función que actualiza los select de la plantilla "Nueva Factura"
      */
     nuevaFacturaRender: function () {
-        import { productos, cliente } from '../app.js'
         let itemSelList = Array.from($('.select-item'));
         
         itemSelList.map(select => {
